@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import * as themoviedbAPI from "../services/movieteka-api";
+import { aiMovieSummary } from "../services/pollinations";
 import noImageAv from "../Image/noImageAvailable.jpg";
 import styles from "./Views.module.css";
 
@@ -28,6 +29,24 @@ export default function HomeSubView() {
   const history = useHistory();
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
+  // AI-резюме фільму українською (через Pollinations.ai gemini-fast)
+  const [aiSummary, setAiSummary] = useState("");
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState(null);
+
+  const handleGenerateAiSummary = async () => {
+    if (!movie || aiLoading) return;
+    setAiLoading(true);
+    setAiError(null);
+    try {
+      const text = await aiMovieSummary(movie.title, movie.overview || "");
+      setAiSummary(text);
+    } catch (err) {
+      setAiError(err.message || "Не вдалося згенерувати");
+    } finally {
+      setAiLoading(false);
+    }
+  };
 
   useEffect(() => {
     themoviedbAPI
