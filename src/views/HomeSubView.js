@@ -85,6 +85,34 @@ export default function HomeSubView() {
                 Overview
                 <span className={styles.descr}>{movie.overview}</span>
               </p>
+              <div className={styles.aiBlock}>
+                <button
+                  type="button"
+                  className={styles.aiButton}
+                  onClick={handleGenerateAiSummary}
+                  disabled={aiLoading || !movie.overview}
+                  title="Згенерувати AI-резюме українською через Pollinations.ai"
+                >
+                  {aiLoading ? "🤖 Генерую..." : "🤖 AI-резюме українською"}
+                </button>
+                {aiSummary && (
+                  <p className={styles.aiSummary}>
+                    <span className={styles.aiBadge}>✨ AI</span>
+                    {aiSummary}
+                    <a
+                      href="https://pollinations.ai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.aiCredit}
+                    >
+                      Built with pollinations.ai
+                    </a>
+                  </p>
+                )}
+                {aiError && (
+                  <p className={styles.aiError}>⚠️ {aiError}</p>
+                )}
+              </div>
               {movie.genres && (
                 <>
                   <p className={styles.genres}>Genres</p>

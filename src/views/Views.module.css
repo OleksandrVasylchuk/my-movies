@@ -226,3 +226,78 @@ img {
   backdrop-filter: blur(5px);
   border-radius: 10px;
 }
+
+/* ─── AI feature (Pollinations.ai integration) ─────────────────────────── */
+.aiBlock {
+  margin: 16px 0;
+  padding: 12px;
+}
+
+.aiButton {
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.aiButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.5);
+}
+
+.aiButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.aiSummary {
+  margin-top: 12px;
+  padding: 14px 16px;
+  background: rgba(124, 58, 237, 0.08);
+  border-left: 3px solid #7c3aed;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #f1f5f9;
+}
+
+.aiBadge {
+  display: inline-block;
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.aiCredit {
+  display: block;
+  margin-top: 8px;
+  font-size: 11px;
+  color: #94a3b8;
+  text-decoration: none;
+}
+
+.aiCredit:hover {
+  color: #c4b5fd;
+  text-decoration: underline;
+}
+
+.aiError {
+  margin-top: 12px;
+  padding: 10px;
+  background: rgba(239, 68, 68, 0.1);
+  border-left: 3px solid #ef4444;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #fca5a5;
+}
